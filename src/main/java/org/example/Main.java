@@ -11,7 +11,8 @@ public class Main {
             System.out.println("Select an option:");
             System.out.println("0 - Change MP4 Character Names");
             System.out.println("1 - Batch edit MP4 Text");
-            System.out.println("2 - Exit");
+            System.out.println("2 - Edit Hex/Text via GUI");
+            System.out.println("3 - Exit");
 
             String choice = scanner.nextLine();
 
@@ -23,6 +24,9 @@ public class Main {
                     editMp4Text();
                     break;
                 case "2":
+                    HexTextEditor.main(new String[]{});
+                    break;
+                case "3":
                     System.exit(0);
                 default:
                     System.out.println("Invalid choice. Please try again.");
