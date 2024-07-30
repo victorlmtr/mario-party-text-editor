@@ -97,8 +97,19 @@ public class Dictionary {
 
     static {
         marioPartyMapping.put(' ', 0x10);
+        marioPartyMapping.put('1', 0x31);
+        marioPartyMapping.put('2', 0x32);
+        marioPartyMapping.put('3', 0x33);
+        marioPartyMapping.put('4', 0x34);
+        marioPartyMapping.put('5', 0x35);
+        marioPartyMapping.put('6', 0x36);
+        marioPartyMapping.put('7', 0x37);
+        marioPartyMapping.put('8', 0x38);
+        marioPartyMapping.put('9', 0x39);
         marioPartyMapping.put('…', 0x85);
         marioPartyMapping.put('œ', 0xE8);
+        marioPartyMapping.put('ù', 0xDD);
+        marioPartyMapping.put('ô', 0xDB);
         marioPartyMapping.put('è', 0xD5);
         marioPartyMapping.put('é', 0xD6);
         marioPartyMapping.put('ê', 0xD7);

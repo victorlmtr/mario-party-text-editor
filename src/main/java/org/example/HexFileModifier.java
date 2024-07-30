@@ -15,15 +15,13 @@ public class HexFileModifier {
 
         HexFileModifier.modifyHexFiles(inputFilePaths, outputDir);
     }
+
     public static void editMp4Text() {
         // Implementation for editMp4Text goes here
         System.out.println("editMp4Text functionality not yet implemented.");
     }
 
-
-
     public static void modifyHexFiles(String[] inputFilePaths, String outputDir) {
-
         try {
             Scanner scanner = new Scanner(System.in);
             Map<String, String> newHexMappings = new HashMap<>();
@@ -150,5 +148,35 @@ public class HexFileModifier {
         } catch (IOException e) {
             System.err.println("Error processing the file: " + e.getMessage());
         }
+    }
+
+    public static void compareAndReplaceNullBytes(String originalFilePath, String editedFilePath, String outputFilePath) {
+        try {
+            byte[] originalFileContent = readFile(originalFilePath);
+            byte[] editedFileContent = readFile(editedFilePath);
+            int byteCount = Math.min(originalFileContent.length, editedFileContent.length);
+
+            int modifiedBytesCount = 0;
+            for (int i = 0; i < byteCount; i++) {
+                if (editedFileContent[i] == 0x00 && originalFileContent[i] != 0x00) {
+                    editedFileContent[i] = 0x20;
+                    modifiedBytesCount++;
+                }
+            }
+
+            writeFile(outputFilePath, editedFileContent);
+            System.out.println("Number of bytes changed: " + modifiedBytesCount);
+        } catch (IOException e) {
+            System.err.println("Error processing the files: " + e.getMessage());
+        }
+    }
+
+    public static void main(String[] args) {
+        // Example usage:
+        compareAndReplaceNullBytes(
+                "E:\\Mario Party modding\\Mario Party 4\\french\\original\\board_f.dat",
+                "E:\\Mario Party modding\\Mario Party 4\\french\\modded\\board_f_modded10.dat",
+                "E:\\Mario Party modding\\Mario Party 4\\french\\modded\\output.dat"
+        );
     }
 }
