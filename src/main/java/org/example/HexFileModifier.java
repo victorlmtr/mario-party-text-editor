@@ -10,7 +10,7 @@ import static org.example.Dictionary.marioPartyMapping;
 public class HexFileModifier {
 
     public static void changeMp4CharacterNames() {
-        String[] inputFilePaths = {"E:\\Mario Party modding\\Mario Party 4\\french\\original\\board_f.dat", "E:\\Mario Party modding\\Mario Party 4\\french\\original\\mini_f.dat"};
+        String[] inputFilePaths = {"E:\\Mario Party modding\\Mario Party 4\\french\\original\\board_f_modded10.dat", "E:\\Mario Party modding\\Mario Party 4\\french\\original\\mini_f.dat"};
         String outputDir = "E:\\Mario Party modding\\Mario Party 4\\french\\modded\\";
 
         HexFileModifier.modifyHexFiles(inputFilePaths, outputDir);
@@ -87,7 +87,7 @@ public class HexFileModifier {
         }
     }
 
-    private static byte[] convertToMarioPartyBytes(String text) {
+    public static byte[] convertToMarioPartyBytes(String text) {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         for (char c : text.toCharArray()) {
             Integer hexValue = marioPartyMapping.get(c);
@@ -115,7 +115,7 @@ public class HexFileModifier {
         fos.close();
     }
 
-    private static String bytesToHex(byte[] bytes) {
+    public static String bytesToHex(byte[] bytes) {
         StringBuilder hexString = new StringBuilder();
         for (byte b : bytes) {
             hexString.append(String.format("%02X", b));
@@ -131,5 +131,24 @@ public class HexFileModifier {
                     + Character.digit(hexString.charAt(i + 1), 16));
         }
         return bytes;
+    }
+
+    public static void modifyHexFilesWithMappings(String[] inputFilePaths, String outputDir, Map<String, String> newHexMappings) {
+        try {
+            for (String inputFilePath : inputFilePaths) {
+                String hexString = bytesToHex(readFile(inputFilePath));
+
+                for (Map.Entry<String, String> mapping : newHexMappings.entrySet()) {
+                    hexString = hexString.replace(mapping.getKey(), mapping.getValue());
+                }
+
+                byte[] modifiedFileContent = hexToBytes(hexString);
+                String outputFilePath = outputDir + File.separator + new File(inputFilePath).getName();
+                writeFile(outputFilePath, modifiedFileContent);
+                System.out.println("File modified and saved as " + outputFilePath);
+            }
+        } catch (IOException e) {
+            System.err.println("Error processing the file: " + e.getMessage());
+        }
     }
 }

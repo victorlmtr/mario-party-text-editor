@@ -8,14 +8,16 @@ public class Dictionary {
 //0b = new
 
     static {
-        Mp4PlayableCharactersMapping.put("Mario", "4D 61 72 69 6F 00 00");
-        Mp4PlayableCharactersMapping.put("Luigi", "4C 75 69 67 69 00 00");
-        Mp4PlayableCharactersMapping.put("Peach", "50 65 61 63 68 00 00");
-        Mp4PlayableCharactersMapping.put("Yoshi", "59 6F 73 68 69 00 00");
-        Mp4PlayableCharactersMapping.put("Wario", "57 61 72 69 6F 00 00");
-        Mp4PlayableCharactersMapping.put("DK", "44 4B 00");
-        Mp4PlayableCharactersMapping.put("Daisy", "44 61 69 73 79 00 00");
-        Mp4PlayableCharactersMapping.put("Waluigi", "57 61 6C 75 69 67 69 00 00 00 00");
+        Mp4PlayableCharactersMapping.put("Bowser", "42 6F 77 73 65 72");
+        Mp4PlayableCharactersMapping.put("pièce", "70 69 D5 63 65");
+//        Mp4PlayableCharactersMapping.put("Mario", "4D 61 72 69 6F");
+//        Mp4PlayableCharactersMapping.put("Luigi", "4C 75 69 67 69");
+//        Mp4PlayableCharactersMapping.put("Peach", "50 65 61 63 68");
+//        Mp4PlayableCharactersMapping.put("Yoshi", "59 6F 73 68 69");
+//        Mp4PlayableCharactersMapping.put("Wario", "57 61 72 69 6F");
+//        Mp4PlayableCharactersMapping.put("DK", "44 4B");
+//        Mp4PlayableCharactersMapping.put("Daisy", "44 61 69 73 79");
+//        Mp4PlayableCharactersMapping.put("Waluigi", "57 61 6C 75 69 67 69");
 
     }
 
